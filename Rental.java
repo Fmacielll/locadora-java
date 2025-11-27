@@ -15,7 +15,7 @@ public class Rental {
       return _movie;
    }
 
-   // NOVO MÉTODO getCharge() — cálculo vem para cá
+   // Cálculo do valor
    public double getCharge() {
       double result = 0;
 
@@ -37,5 +37,17 @@ public class Rental {
             break;
       }
       return result;
+   }
+
+   // NOVO: cálculo dos pontos de fidelidade
+   public int getFrequentRenterPoints() {
+      int points = 1;
+
+      if (getMovie().getPriceCode() == Movie.NEW_RELEASE &&
+          getDaysRented() > 1) {
+         points++;
+      }
+
+      return points;
    }
 }
