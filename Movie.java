@@ -4,29 +4,41 @@ public class Movie {
     public static final int CHILDRENS = 2;
 
     private String _title;
-    private int _priceCode;
+    private Price _price; // novo campo
 
     public Movie(String title, int priceCode) {
         _title = title;
-        _priceCode = priceCode;
-    }
-
-    public int getPriceCode() {
-        return _priceCode;
-    }
-
-    public void setPriceCode(int arg) {
-        _priceCode = arg;
+        setPriceCode(priceCode);
     }
 
     public String getTitle() {
         return _title;
     }
 
+    public int getPriceCode() {
+        return _price.getPriceCode();
+    }
+
+    public void setPriceCode(int arg) {
+        switch (arg) {
+            case REGULAR:
+                _price = new RegularPrice();
+                break;
+            case CHILDRENS:
+                _price = new ChildrensPrice();
+                break;
+            case NEW_RELEASE:
+                _price = new NewReleasePrice();
+                break;
+            default:
+                throw new IllegalArgumentException("Incorrect Price Code");
+        }
+    }
+
     public double getCharge(int daysRented) {
         double result = 0;
 
-        switch (_priceCode) {
+        switch (getPriceCode()) {
             case REGULAR:
                 result += 2;
                 if (daysRented > 2)
@@ -47,11 +59,10 @@ public class Movie {
         return result;
     }
 
-    // Novo método refatorado
     public int getFrequentRenterPoints(int daysRented) {
-        if (_priceCode == NEW_RELEASE && daysRented > 1) {
+        if (getPriceCode() == NEW_RELEASE && daysRented > 1) {
             return 2;
         }
         return 1;
     }
-} // <-- esta é a chave final que fecha a classe
+}
