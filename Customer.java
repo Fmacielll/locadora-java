@@ -1,9 +1,6 @@
-import java.util.Enumeration;
-import java.util.Vector;
-
 public class Customer {
     private String _name;
-    private Vector _rentals = new Vector();
+    private java.util.Vector _rentals = new java.util.Vector();
 
     public Customer(String name) {
         _name = name;
@@ -17,13 +14,13 @@ public class Customer {
         return _name;
     }
 
-    public Enumeration getRentals() {
+    public java.util.Enumeration getRentals() {
         return _rentals.elements();
     }
 
     public double getTotalCharge() {
         double result = 0;
-        Enumeration rentals = _rentals.elements();
+        java.util.Enumeration rentals = _rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             result += each.getCharge();
@@ -33,7 +30,7 @@ public class Customer {
 
     public int getTotalFrequentRenterPoints() {
         int result = 0;
-        Enumeration rentals = _rentals.elements();
+        java.util.Enumeration rentals = _rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             result += each.getFrequentRenterPoints();
@@ -41,12 +38,12 @@ public class Customer {
         return result;
     }
 
-    // Agora delega para TextStatement
+    // delega para TextStatement
     public String statement() {
         return new TextStatement().value(this);
     }
 
-    // Agora delega para HtmlStatement
+    // delega para HtmlStatement
     public String htmlStatement() {
         return new HtmlStatement().value(this);
     }
