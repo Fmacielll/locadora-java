@@ -15,7 +15,6 @@ public class Rental {
       return _movie;
    }
 
-   // cálculo do valor
    public double getCharge() {
       double result = 0;
 
@@ -39,12 +38,12 @@ public class Rental {
       return result;
    }
 
-   // NOVO MÉTODO — Frequent Renter Points
    public int getFrequentRenterPoints() {
       if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
           getDaysRented() > 1) {
          return 2;
+      } else {
+         return 1;
       }
-      return 1;
    }
 }
