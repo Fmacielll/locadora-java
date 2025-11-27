@@ -7,22 +7,20 @@ public class Rental {
         _daysRented = daysRented;
     }
 
-    public int getDaysRented() {
-        return _daysRented;
-    }
-
     public Movie getMovie() {
         return _movie;
     }
 
-    public double getCharge() {
-        return _movie.getCharge(_daysRented);
+    public int getDaysRented() {
+        return _daysRented;
     }
 
+    // Método refatorado, apenas delega para Movie
     public int getFrequentRenterPoints() {
-        if ((_movie.getPriceCode() == Movie.NEW_RELEASE) && _daysRented > 1)
-            return 2;
-        else
-            return 1;
+        return _movie.getFrequentRenterPoints(_daysRented);
+    }
+
+    public double getCharge() {
+        return _movie.getCharge(_daysRented);
     }
 }

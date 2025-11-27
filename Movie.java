@@ -46,4 +46,12 @@ public class Movie {
 
         return result;
     }
-}
+
+    // Novo método refatorado
+    public int getFrequentRenterPoints(int daysRented) {
+        if (_priceCode == NEW_RELEASE && daysRented > 1) {
+            return 2;
+        }
+        return 1;
+    }
+} // <-- esta é a chave final que fecha a classe
