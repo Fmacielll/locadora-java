@@ -1,5 +1,4 @@
 public abstract class Statement {
-    // Método template que será usado pelas subclasses
     public String value(Customer aCustomer) {
         String result = headerString(aCustomer);
         result += rentalString(aCustomer);
