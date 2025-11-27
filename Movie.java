@@ -35,11 +35,11 @@ public class Movie {
         }
     }
 
-    // Agora apenas delega para Price
     public double getCharge(int daysRented) {
         return _price.getCharge(daysRented);
     }
 
+    // Agora apenas delega para Price
     public int getFrequentRenterPoints(int daysRented) {
         return _price.getFrequentRenterPoints(daysRented);
     }
